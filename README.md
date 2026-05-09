@@ -5,29 +5,40 @@ Downloadable fixtures for the [madbench](https://github.com/MadAppGang/madbench)
 ## Layout
 
 ```
-codenav/sample-go-repo/      # Tutorial 02 — first live LLM eval (codenav)
-codegen-fizzbuzz/repo/       # Tutorial 03 — codegen with exec
-bugfix-add/repo/             # Tutorial 04 — semantic judging with rubrics
+tutorial/
+├── 02-first-live-llm-eval/     # for docs/tutorials/02-first-live-llm-eval.md
+│   ├── go.mod
+│   ├── auth/login.go
+│   ├── routes/router.go
+│   ├── cmd/server/main.go
+│   └── internal/session/store.go
+├── 03-codegen-with-exec/       # for docs/tutorials/03-codegen-with-exec.md
+│   ├── go.mod
+│   └── fizzbuzz_test.go
+└── 04-semantic-judging/        # for docs/tutorials/04-semantic-judging-with-rubrics.md
+    ├── go.mod
+    ├── add.go
+    └── add_test.go
 ```
 
-Each subdirectory is a complete fixture — drop it under your tutorial project's `fixtures/` directory and you're ready to run.
+Folder names mirror the tutorial filename slugs in `docs/tutorials/` so the mapping is trivially traceable in both directions.
 
 ## Quick download
 
-For example, to pull the codenav fixture into your tutorial project:
+To pull the codenav fixture (Tutorial 02) into your project:
 
 ```bash
 mkdir -p fixtures
 curl -sL https://github.com/MadAppGang/madbench-examples/tarball/main \
   | tar -xz --strip-components=2 -C fixtures \
-      'MadAppGang-madbench-examples-*/codenav/sample-go-repo'
+      'MadAppGang-madbench-examples-*/tutorial/02-first-live-llm-eval'
 ```
 
-The strip count and path glob differ per fixture — see each tutorial's "Step 1 — Build the fixture" section for the exact command.
+The path argument at the end picks which tutorial to extract — replace `02-first-live-llm-eval` with `03-codegen-with-exec` or `04-semantic-judging` for the other tutorials. See each tutorial's "Step 1 — Build the fixture" section for the exact command.
 
 ## Why a separate repo?
 
-`madbench` itself is private; this repo holds only the tutorial fixture trees so they're publicly downloadable without exposing the harness source. Fixture content here is generated from `examples/<tutorial>/fixtures/` in the main repo and is intended to stay in sync.
+`madbench` itself is private; this repo holds only the tutorial fixture trees so they're publicly downloadable without exposing the harness source. Fixture content is generated from `examples/<tutorial>/fixtures/` in the main repo.
 
 ## License
 
